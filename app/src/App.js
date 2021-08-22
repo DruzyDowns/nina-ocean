@@ -14,11 +14,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App relative">
+      <div className="App">
         <div className="w-full flex justify-center">
           <h1 className="uppercase font-bold text-5xl">ocean</h1>
         </div>
-        <AlbumList />
+        <div className="w-full">
+          <AlbumList />
+        </div>
       </div>
     );
   }
