@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AlbumList from "./components/AlbumList";
 import TitleMarquee from "./components/TitleMarquee";
+import Footer from "./components/Footer";
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class App extends Component {
         </div>
 
         <AlbumList />
+        <Footer />
       </div>
     );
   }
