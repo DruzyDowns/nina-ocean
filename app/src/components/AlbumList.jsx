@@ -4,39 +4,6 @@ import axios from "axios";
 let albumRequestUrl =
   "https://itunes.apple.com/search?term=frank+ocean&country=us&media=music&entity=album";
 
-function AlbumTooltip({ children, tooltipTitle, tooltipDescription }) {
-  const tipRef = React.createRef(null);
-  function handleMouseEnter() {
-    tipRef.current.style.opacity = 1;
-    tipRef.current.style.marginLeft = "20px";
-  }
-  function handleMouseLeave() {
-    tipRef.current.style.opacity = 0;
-    tipRef.current.style.marginLeft = "10px";
-  }
-  return (
-    <div
-      className="relative flex items-center"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div
-        className="absolute w-56 whitespace-no-wrap bg-gradient-to-b from-white to-gray-100 text-black p-2 rounded flex flex-col justify-center transition-all duration-150"
-        style={{ left: "100%", opacity: 0 }}
-        ref={tipRef}
-      >
-        <div
-          className="bg-white h-3 w-3 absolute"
-          style={{ left: "-6px", transform: "rotate(45deg)" }}
-        />
-        <h3 className="text-xl uppercase">{tooltipTitle} </h3>
-        <p>{tooltipDescription}</p>
-      </div>
-      {children}
-    </div>
-  );
-}
-
 class AlbumList extends Component {
   constructor() {
     super();
@@ -60,18 +27,29 @@ class AlbumList extends Component {
   render() {
     return (
       <main>
-        <ul className="w-full flex justify-center">
+        <ul className="w-full grid gap-4 grid-cols-1 lg:grid-cols-2">
           {this.state.filteredAlbums.map((album) => (
-            <AlbumTooltip
-              tooltipTitle={album.artistName}
-              tooltipDescription={album.artistName}
+            <li
               key={album.collectionId}
+              className="group w-full relative transform hover:ebb hover:-translate-y-1 flex rounded-lg shadow-md transition-all"
             >
-              <li>
-                <img src={album.artworkUrl100} alt="" />
+              <img
+                className=" rounded-l-lg "
+                src={album.artworkUrl100}
+                alt=""
+              />
+              <div className="p-2 bg-white w-full rounded-r-lg group-hover:glow">
+                <h3>{album.artistName}</h3>
                 <h3>{album.collectionName}</h3>
-              </li>
-            </AlbumTooltip>
+                <h3>
+                  {new Intl.DateTimeFormat("en-GB", {
+                    year: "numeric",
+                    month: "long",
+                  }).format(new Date(album.releaseDate))}
+                </h3>
+                <a href={album.collectionViewUrl}>View Album on iTunes</a>
+              </div>
+            </li>
           ))}
         </ul>
       </main>
