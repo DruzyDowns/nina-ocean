@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import AlbumList from "./components/AlbumList";
-import AlbumCard from "./components/AlbumCard";
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class App extends Component {
         <div className="w-full flex justify-center">
           <h1 className="uppercase font-bold text-5xl">ocean</h1>
         </div>
-        <AlbumCard />
+
         <AlbumList />
       </div>
     );
