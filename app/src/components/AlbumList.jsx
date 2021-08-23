@@ -7,11 +7,8 @@ class AlbumList extends Component {
   constructor() {
     super();
     this.state = {
-      show: false,
       filteredAlbums: [],
     };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidMount() {
@@ -26,21 +23,13 @@ class AlbumList extends Component {
     });
   }
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
-
   render() {
     return (
       <main>
         <ul>
           {this.state.filteredAlbums.map((album) => (
-            <li key={album.collectionId} onClick={this.showModal}>
-              <img src={album.artworkUrl100} alt="" />
+            <li key={album.collectionId}>
+              <img src={album.artworkUrl100} alt="" onClick={this.showModal} />
               <p>{album.artistName}</p>
               <p>{album.collectionName}</p>
               <p>{album.releaseDate}</p>
