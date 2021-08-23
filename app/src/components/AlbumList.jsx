@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+//set search terms
 let albumRequestUrl =
   "https://itunes.apple.com/search?term=frank+ocean&country=us&media=music&entity=album";
 
@@ -16,14 +17,16 @@ class AlbumList extends Component {
     //make the request and set the component state
     axios.get(albumRequestUrl).then((res) => {
       const albums = res.data;
+
+      //filter out reults from other artists
       let filteredAlbums = albums.results.filter((album) =>
         album.artistName.includes("Frank Ocean")
       );
-      console.log(filteredAlbums);
       this.setState({ filteredAlbums });
     });
   }
 
+  //map through the data and populate the cards
   render() {
     return (
       <main className="w-full p-4">
@@ -62,7 +65,7 @@ class AlbumList extends Component {
                     <a
                       href={album.collectionViewUrl}
                       target="_blank"
-                      rel="nofollow"
+                      rel="noreferrer"
                       className="absolute bottom-0 right-0 flex items-end p-2"
                     >
                       <svg
