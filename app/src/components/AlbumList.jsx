@@ -3,7 +3,7 @@ import axios from "axios";
 
 //set search terms
 let albumRequestUrl =
-  "/itunes.apple.com/search?term=frank+ocean&country=us&media=music&entity=album";
+  "https://itunes.apple.com/search?term=frank+ocean&country=us&media=music&entity=album";
 
 class AlbumList extends Component {
   constructor() {
