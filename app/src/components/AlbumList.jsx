@@ -3,7 +3,7 @@ import axios from "axios";
 
 //set search terms
 let albumRequestUrl =
-  "https://itunes.apple.com/search?term=frank+ocean&country=us&media=music&entity=album";
+  "/itunes.apple.com/search?term=frank+ocean&country=us&media=music&entity=album";
 
 class AlbumList extends Component {
   constructor() {
@@ -17,7 +17,6 @@ class AlbumList extends Component {
     //make the request and set the component state
     axios.get(albumRequestUrl).then((res) => {
       const albums = res.data;
-
       //filter out reults from other artists
       let filteredAlbums = albums.results.filter((album) =>
         album.artistName.includes("Frank Ocean")
