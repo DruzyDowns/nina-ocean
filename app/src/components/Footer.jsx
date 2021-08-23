@@ -5,7 +5,7 @@ const Footer = () => (
     <a
       href="https://github.com/DruzyDowns?tab=repositories"
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
     >
       <div className="flex items-end">
         <p className="pr-2 uppercase work">created by Druzy</p>

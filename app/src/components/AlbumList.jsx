@@ -65,7 +65,7 @@ class AlbumList extends Component {
                     <a
                       href={album.collectionViewUrl}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="absolute bottom-0 right-0 flex items-end p-2"
                     >
                       <svg
